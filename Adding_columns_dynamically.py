@@ -45,4 +45,27 @@ df2=addCol('City','Bengaluru').display()
 
 # COMMAND ----------
 
+# DBTITLE 1,#Adding multiple columns
+##
+
+# COMMAND ----------
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import lit
+
+data = [(1, "John", 25), (2, "Alice", 30), (3, "Bob", 35)]
+columns = ["id", "name", "age"]
+df = spark.createDataFrame(data, columns)
+
+dynamic_columns = ['City', 'State', 'Country']
+lit_values = ['Bengaluru', 'Karnataka', 'India']
+
+for col_name, lit_val in zip(dynamic_columns, lit_values):
+    df = df.withColumn(col_name, lit(lit_val))
+
+df.show()
+
+
+# COMMAND ----------
+
 
