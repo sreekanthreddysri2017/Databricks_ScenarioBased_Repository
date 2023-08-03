@@ -28,4 +28,21 @@ display(df)
 
 # COMMAND ----------
 
+def addCol(col_name, lit_val):
+    df1 = df.withColumn(col_name, lit(lit_val))
+    df1.display()
+    
+addCol('City','Bengaluru')
+
+# COMMAND ----------
+
+def addCol(col_name, lit_val):
+    df1 = df.withColumn(col_name, lit(lit_val))
+    return df1
+    
+    
+df2=addCol('City','Bengaluru').display()
+
+# COMMAND ----------
+
 
